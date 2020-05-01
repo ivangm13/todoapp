@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 600px;
+    margin: 0 auto;
+    font-family: 'Rubik', sans-serif;
+}
+header .crear{
+    background-color: cornflowerblue;
+    padding: 15px;
+    border: 2px solid black;
+   
+}
+header .crear #crearTarea{
+    padding: 4px;
+    margin-right: 5px;
+
+}
+header .crear #prioridad{
+    padding: 4px;
+    margin-right: 5px;
+    cursor: pointer;
+
+}
+header .crear #guardar{
+    padding: 3px 4px;
+    cursor: pointer;
+
+}
+header .buscar{
+    background-color: crimson;
+    padding: 15px;
+    border: 2px solid black;
+
+}
+header .buscar #selector2{
+    padding: 4px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+header .buscar #buscadorTarea{
+    padding: 4px;
+}
+
+main .tarea{
+display: flex;
+flex-wrap: wrap;
+border: 2px solid black;
+border-top: 3px solid black;
+border-bottom: 3px solid black;
+
+font-size: 1.2em;
+}
+main .tarea .texto{
+width: 75%;
+padding: 15px;
+background-color: chartreuse;
+
+}
+main .tarea .eliminar{
+width: 25%;
+text-align: center;
+padding: 15px;
+background-color: red;
+font-weight: 700;
+cursor: pointer;
+
+}
+
+footer{
+    color: white;
+    background-color: black;
+    padding: 10px;
+}
+
+footer p{
+    text-align: right;
+    font-size: 0.7em;
+
+}

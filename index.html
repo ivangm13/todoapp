@@ -5,10 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do App Iván</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
+    <div class="container">
+        <header>
+            <div class="crear">
+                <input type="text" id="crearTarea">
+                <select id="prioridad">
+                    <option value="diaria">Diaria</option>
+                    <option value="mensual">Mensual</option>
+                    <option value="urgente">Urgente</option>
+                </select>
+                <button id="guardar">Guardar</button>
+            </div>
+            <div class="buscar">
+                <select id="selector2">
+                    <option value="diaria">Diaria</option>
+                    <option value="mensual">Mensual</option>
+                    <option value="urgente">Urgente</option>
+                </select>
+                <input type="text" id="buscadorTarea">
+            </div>
+        </header>
+        <main>
+            <div class="tarea">
+                <div class="texto"> Texto de la tarea</div>
+                <div class="eliminar">Eliminar</div>
+            </div>
+        </main>
+        <footer>
+            <h4>ToDo App - Iván García</h4>
+            <p>Copyright</p>
+        </footer>
+    </div>
+
+
+    <script src="js/main.js"></script>
 </body>
 
 </html>
