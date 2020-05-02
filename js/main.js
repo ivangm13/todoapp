@@ -79,8 +79,7 @@ for (btn of btnEliminar) {
 
 function eliminarTarea() {
 
-    let idTareaEliminar = document.getElementsByClassName('tarea');
-    console.log(idTareaEliminar);
+    let idTareaEliminar;
 
 }
 
@@ -95,12 +94,16 @@ filtroPrioridad.addEventListener('change', filtrarPrioridad);
 
 function filtrarPrioridad() {
     let listaFiltrada = new Array();
-    for (tarea of listaTareas) {
-        if (tarea.prioridad == (filtroPrioridad.value).toLowerCase()) {
-            listaFiltrada.push(tarea);
+    if (filtroPrioridad.value == 'todas') { mostrarTareas(listaTareas) }
+    else {
+
+        for (tarea of listaTareas) {
+            if (tarea.prioridad == (filtroPrioridad.value).toLowerCase()) {
+                listaFiltrada.push(tarea);
+            }
         }
+        mostrarTareas(listaFiltrada);
     }
-    mostrarTareas(listaFiltrada);
 }
 
 //Filtrar por texto (debe reaccionar al poner cada letra)
@@ -111,13 +114,13 @@ buscarTarea.addEventListener('keyup', filtrarTareas);
 
 function filtrarTareas() {
     let listaFiltrada = new Array();
-    
+
     let textoIntroducido = document.querySelector('.buscar #buscadorTarea').value.toLowerCase();
-    for(tarea of listaTareas){
+    for (tarea of listaTareas) {
         let texto = tarea.texto.toLowerCase();
         console.log(texto);
         console.log(textoIntroducido);
-        if(texto.includes(textoIntroducido)){
+        if (texto.includes(textoIntroducido)) {
             listaFiltrada.push(tarea);
         }
     }
