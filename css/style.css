@@ -90,12 +90,12 @@ footer p{
 
 }
 
-.chartreuse{
+.diaria{
     background-color: rgb(0, 255, 98);
 }
-.blue{
+.mensual{
     background-color: rgb(0, 183, 255);
 }
-.tomato{
+.urgente{
     background-color: tomato;
 }
