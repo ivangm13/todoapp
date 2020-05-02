@@ -1,6 +1,9 @@
 var listaTareas = new Array();
 var tareas = document.querySelector('.tareas');
 var idTareasGlobal = 4;
+
+
+
 listaTareas = [
     {
         idtarea: 0,
@@ -26,31 +29,16 @@ listaTareas = [
 ];
 
 function mostrarTareas(pListaTareas) {
-    let clase = "";
     tareas.innerHTML = "";
     for (tarea of pListaTareas) {
         mostrarUnaTarea(tarea);
-    }
-    /* for (tarea of pListaTareas) {
-        switch (tarea.prioridad) {
-            case 'diaria':
-                clase = 'diaria'
-                break;
-            case 'mensual':
-                clase = 'mensual'
-                break;
-            case 'urgente':
-                clase = 'urgente'
-                break;
-        }
-        tareas.innerHTML += `<div class="tarea ${clase}" id="${tarea.idtarea}">
-                                <div class="texto"> ${tarea.texto}</div>
-                                <div class="eliminar">Eliminar</div>
-                            </div>`; 
 
-    }*/
+    }
+    darEventoEliminar();
+
 }//Fin mostrarTareas
 mostrarTareas(listaTareas);
+
 
 //Funcion para mostrar una sola tarea:
 
@@ -66,10 +54,12 @@ function mostrarUnaTarea(pTarea) {
             clase = 'urgente'
             break;
     }
-    tareas.innerHTML += `<div class="tarea ${clase}" id="${pTarea.idtarea}">
+    tareas.innerHTML += `<div class="tarea ${clase}" >
                         <div class="texto"> ${pTarea.texto}</div>
-                        <div class="eliminar">Eliminar</div>
-                        </div>`
+                        <div class="eliminar" data-id=${pTarea.idtarea} >Eliminar</div>
+                        </div>`;
+
+
 }
 
 //Funcion para añadir tareas
@@ -82,29 +72,39 @@ btnGuardar.addEventListener('click', crearTarea);
 function crearTarea() {
     var tareaNueva = document.querySelector('#crearTarea').value;
     var prioridadNuevaTarea = document.querySelector('#prioridad').value;
-    let tarea = {
-        idtarea: idTareasGlobal,
-        texto: tareaNueva,
-        prioridad: prioridadNuevaTarea
-    };
-    listaTareas.push(tarea);
-    mostrarUnaTarea(tarea);
-    console.log(listaTareas)
-    idTareasGlobal++;
-    document.querySelector('#crearTarea').value = "";
+    var mensaje = document.getElementById('mensaje');
+    if (tareaNueva == "") {
+        mensaje.style.display = "block";
+    } else {
+        mensaje.style.display = "none";
+        let tarea = {
+            idtarea: idTareasGlobal,
+            texto: tareaNueva,
+            prioridad: prioridadNuevaTarea
+        };
+        listaTareas.push(tarea);
+        mostrarUnaTarea(tarea);
+
+        console.log(listaTareas)
+        idTareasGlobal++;
+        document.querySelector('#crearTarea').value = "";
+        darEventoEliminar;
+    }
+
+
 }
 
 //Funcion para eliminar tareas
 
-var btnEliminar = document.querySelectorAll('.tarea .eliminar');
-for (btn of btnEliminar) {
-    btn.addEventListener('click', eliminarTarea);
-}
 
-function eliminarTarea() {
-
-
-
+function eliminarTarea(event) {
+    let idEliminar = event.target.dataset.id;
+    console.log(idEliminar)
+    listaTareas.splice(idEliminar, 1);
+    console.log(listaTareas);
+    let tareaFuera = event.target.parentNode;
+    console.log(tareaFuera)
+    tareaFuera.parentNode.removeChild(tareaFuera);
 }
 
 
@@ -150,4 +150,12 @@ function filtrarTareas() {
     }
     console.log(listaFiltrada)
     mostrarTareas(listaFiltrada)
+}
+
+function darEventoEliminar() {
+    console.log('entrar')
+    var btnEliminar = document.querySelectorAll('.tarea .eliminar');
+    for (btn of btnEliminar) {
+        btn.addEventListener('click', eliminarTarea);
+    }
 }

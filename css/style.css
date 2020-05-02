@@ -99,3 +99,15 @@ footer p{
 .urgente{
     background-color: tomato;
 }
+
+header #mensaje{
+    background-color: red;
+    border: 1px solid black;
+    text-align: center;
+    padding: 3px;
+    font-weight: 700;
+    width: 80%;
+    margin: 3px auto;
+    display: none;
+
+}
