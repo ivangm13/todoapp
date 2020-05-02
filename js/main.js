@@ -26,29 +26,51 @@ listaTareas = [
 ];
 
 function mostrarTareas(pListaTareas) {
-    let color = "";
+    let clase = "";
     tareas.innerHTML = "";
-
     for (tarea of pListaTareas) {
+        mostrarUnaTarea(tarea);
+    }
+    /* for (tarea of pListaTareas) {
         switch (tarea.prioridad) {
             case 'diaria':
-                color = 'chartreuse'
+                clase = 'diaria'
                 break;
             case 'mensual':
-                color = 'blue'
+                clase = 'mensual'
                 break;
             case 'urgente':
-                color = 'tomato'
+                clase = 'urgente'
                 break;
         }
-        tareas.innerHTML += `<div class="tarea ${color}" id="${tarea.idtarea}">
+        tareas.innerHTML += `<div class="tarea ${clase}" id="${tarea.idtarea}">
                                 <div class="texto"> ${tarea.texto}</div>
                                 <div class="eliminar">Eliminar</div>
-                            </div>`;
+                            </div>`; 
 
-    }
+    }*/
 }//Fin mostrarTareas
 mostrarTareas(listaTareas);
+
+//Funcion para mostrar una sola tarea:
+
+function mostrarUnaTarea(pTarea) {
+    switch (pTarea.prioridad) {
+        case 'diaria':
+            clase = 'diaria'
+            break;
+        case 'mensual':
+            clase = 'mensual'
+            break;
+        case 'urgente':
+            clase = 'urgente'
+            break;
+    }
+    tareas.innerHTML += `<div class="tarea ${clase}" id="${pTarea.idtarea}">
+                        <div class="texto"> ${pTarea.texto}</div>
+                        <div class="eliminar">Eliminar</div>
+                        </div>`
+}
 
 //Funcion para añadir tareas
 
@@ -66,8 +88,10 @@ function crearTarea() {
         prioridad: prioridadNuevaTarea
     };
     listaTareas.push(tarea);
-    mostrarTareas(listaTareas);
+    mostrarUnaTarea(tarea);
+    console.log(listaTareas)
     idTareasGlobal++;
+    document.querySelector('#crearTarea').value = "";
 }
 
 //Funcion para eliminar tareas
@@ -79,7 +103,7 @@ for (btn of btnEliminar) {
 
 function eliminarTarea() {
 
-    let idTareaEliminar;
+
 
 }
 
