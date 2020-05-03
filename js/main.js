@@ -32,12 +32,10 @@ function mostrarTareas(pListaTareas) {
     tareas.innerHTML = "";
     for (tarea of pListaTareas) {
         mostrarUnaTarea(tarea);
-
     }
-    darEventoEliminar();
+    crearEventoEliminar();
 
 }//Fin mostrarTareas
-mostrarTareas(listaTareas);
 
 
 //Funcion para mostrar una sola tarea:
@@ -58,7 +56,6 @@ function mostrarUnaTarea(pTarea) {
                         <div class="texto"> ${pTarea.texto}</div>
                         <div class="eliminar" data-id=${pTarea.idtarea} >Eliminar</div>
                         </div>`;
-
 
 }
 
@@ -85,10 +82,9 @@ function crearTarea() {
         listaTareas.push(tarea);
         mostrarUnaTarea(tarea);
 
-        console.log(listaTareas)
         idTareasGlobal++;
         document.querySelector('#crearTarea').value = "";
-        darEventoEliminar;
+        crearEventoEliminar();
     }
 
 
@@ -99,11 +95,9 @@ function crearTarea() {
 
 function eliminarTarea(event) {
     let idEliminar = event.target.dataset.id;
-    console.log(idEliminar)
+
     listaTareas.splice(idEliminar, 1);
-    console.log(listaTareas);
     let tareaFuera = event.target.parentNode;
-    console.log(tareaFuera)
     tareaFuera.parentNode.removeChild(tareaFuera);
 }
 
@@ -142,20 +136,20 @@ function filtrarTareas() {
     let textoIntroducido = document.querySelector('.buscar #buscadorTarea').value.toLowerCase();
     for (tarea of listaTareas) {
         let texto = tarea.texto.toLowerCase();
-        console.log(texto);
-        console.log(textoIntroducido);
         if (texto.includes(textoIntroducido)) {
             listaFiltrada.push(tarea);
         }
     }
-    console.log(listaFiltrada)
-    mostrarTareas(listaFiltrada)
+    mostrarTareas(listaFiltrada);
 }
 
-function darEventoEliminar() {
-    console.log('entrar')
+function crearEventoEliminar() {
     var btnEliminar = document.querySelectorAll('.tarea .eliminar');
     for (btn of btnEliminar) {
         btn.addEventListener('click', eliminarTarea);
     }
 }
+
+//Inicialización de la aplicación
+
+mostrarTareas(listaTareas);
